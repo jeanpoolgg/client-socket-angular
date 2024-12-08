@@ -20,8 +20,16 @@ export class WebsocketService {
     });
 
     this.socket.on('disconnect', () => {
-      console.log('Conectado al servidor');
+      console.log('Desconectado del servidor');
       this.socketStatus = false;
     });
+  }
+
+  emit(evento: string, payload?: any, callback?: Function){
+    this.socket.emit(evento, payload, callback);
+  }
+
+  listen(evento: string){
+    return this.socket.fromEvent(evento);
   }
 }
