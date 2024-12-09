@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../../classes/usuario';
 import { WebsocketService } from '../../services/websocket.service';
 
 @Component({
@@ -16,6 +15,10 @@ export class MensajesComponent {
   ) {
     const usuario = this.wsService.getUsuario();
     this.usuarioNombre = usuario ? usuario.nombre : null;
+  }
+
+  salir() {
+    this.wsService.logoutWS();
   }
 
 
